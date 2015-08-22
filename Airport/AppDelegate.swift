@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // 3. Set the beacon manager's delegate
         self.beaconManager.delegate = self
+        self.beaconManager.requestAlwaysAuthorization()
         
         return true
     }
