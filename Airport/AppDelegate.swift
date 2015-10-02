@@ -23,10 +23,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
         self.beaconManager.requestAlwaysAuthorization()
         self.beaconManager.startMonitoringForRegion(CLBeaconRegion(
             proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!,
-            major: 35614, minor: 33199, identifier: "Guest Room")
+            major: 42222, minor: 8236, identifier: "Entrance")
         )
+        UIApplication.sharedApplication().registerUserNotificationSettings(
+            UIUserNotificationSettings(forTypes: .Alert, categories: nil))
         
         return true
+    }
+    
+    // 4. Add notification
+    func beaconManager(manager: AnyObject!, didEnterRegion region: CLBeaconRegion!) {
+        let notification = UILocalNotification()
+        notification.alertBody =
+            "Welcome to the home of Swati Gupta, Mayank Kapoor & Aryan Kapoor. " +
+            "We hope you enjoy your stay here. " +
+            "Please let us know how we can make your stay better."
+        UIApplication.sharedApplication().presentLocalNotificationNow(notification)
     }
 
     func applicationWillResignActive(application: UIApplication) {
