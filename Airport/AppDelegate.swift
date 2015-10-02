@@ -21,6 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
         // 3. Set the beacon manager's delegate
         self.beaconManager.delegate = self
         self.beaconManager.requestAlwaysAuthorization()
+        self.beaconManager.startMonitoringForRegion(CLBeaconRegion(
+            proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!,
+            major: 35614, minor: 33199, identifier: "Guest Room")
+        )
         
         return true
     }
